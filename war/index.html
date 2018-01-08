@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<title>Kada 2 India</title>
+        
+        <!-- Bootstrap core CSS -->
+        <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="./css/base.css" rel="stylesheet">
+
+        <!-- Just for debugging purposes. Don't actually copy this line! -->
+        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+	</head>
+	<body>
+		<div class="k2i-headerbg"></div>
+        <div class="k2i-contentbg">
+	        <div class="k2i-content">
+	            <div class="container-fluid">
+	                <div class="row">
+	                    <div class="col-xs-12">
+	                    	<div id="k2i-intro">
+		                    	<p class="k2i-intro">
+		                    		Zoals je ondertussen waarschijnlijk al weet, vertrek ik in November voor 12 maanden naar Bangalore! Je bent dus een jaar van mij af, en dat mag op <b>24 October</b> gevierd worden!<br><br>
+		                    		<img alt="party_gif" src="./img/party.gif">
+		                    	</p>
+		                    	<p>
+		                    		Er is echter een <u>probleem</u> ... je bent namelijk nog niet uitgenodigd!
+		                    		<br><br>
+		                    		Maar geen paniek, een uitnodiging is makkelijk te verkrijgen! Je moet enkel aantonen dat je zelf een fan van India bent! Je kan dit op verschillende manieren doen:
+		                    		<ul>
+		                    			<li> Laat een magnifieke <i>Indische</i> snor groeien ...
+		                    			<li> Bewijs je kennis over India in deze pop quiz: <br><br>
+		                    			<button class="k2i-intro-start" id="StartQuiz" value="Start!">Start the Quiz!</button><br><br>
+		                    			</li>
+		                    		</ul>
+		                    		Haal je het einde? Dan krijg je een official invitation met verdere info op feesboek!<br><br>
+		                    	</p>
+	                    	</div>
+	                        <div id="QuizContainer"></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+        </div>
+        
+        <!-- Script includes at the bottom of the page. -->
+        <script src="./js/lib/jquery.min.js"></script>
+        <script src="./bootstrap/js/bootstrap.min.js"></script>
+        
+        
+        <script src="./js/quiz/myquestion.js"></script>
+        <script src="./js/quiz/questions/imagequestion.js"></script>
+        <script src="./js/quiz/myquiz.js"></script>
+        
+        <script>
+        
+        	// Create the quiz
+	        var quiz = new MyQuiz($("#QuizContainer"));
+	        var question1 = new ImageQuestion("1", "GodQuestion1", quiz, "Hoe noemt deze God?", "./img/god1.jpg", 8000);
+	        var question2 = new ImageQuestion("2", "TajMahalQuestion", quiz, "Waar staat dit gebouw","./img/building.jpg", 6000);
+	        var question3 = new ImageQuestion("3", "GodQuestion2", quiz, "Hoe noemt deze God?", "./img/god2.jpg", 6000);
+	        var question4 = new ImageQuestion("4", "MovieQuestion", quiz, "Hoe noemt deze bollywood filmster?", "./img/movie.jpg", 7000);
+	        quiz.addQuestion(question1);
+	        quiz.addQuestion(question2);
+	        quiz.addQuestion(question3);
+	        quiz.addQuestion(question4);
+        
+	        // What needs to happen when the start button is clicked.
+        	$("#StartQuiz").on("click", function () {
+        		// Hide intro text.
+        		$("#k2i-intro").hide();
+        		// Hide this button.
+        		$("#StartQuiz").hide();
+        		// Start de quiz.
+        		quiz.start();
+        	});
+	        
+	        
+	        // Start playing indian music
+	        var mySound = new Audio("./media/tune.mp3");
+	        mySound.play();
+	        
+	        // If "Esc" is pressed, stop the audio.
+	        $(document).keyup(function(e) {
+	            if (e.keyCode == 27) { // escape key maps to keycode `27`
+	            	mySound.pause();
+	           }
+	       });
+            
+        </script>
+	</body>
+</html>
